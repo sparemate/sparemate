@@ -1,0 +1,269 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<style>
+
+.buttons{
+  display: table;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.container4 {
+
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  max-width: 50%;
+  font-size: 5vw;
+}
+
+.rating {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  overflow: hidden;
+  flex-direction: row-reverse;
+  height: 150px;
+  position: relative;
+}
+
+.rating-0 {
+  filter: grayscale(100%);
+}
+
+.rating > input {
+  display: none;
+}
+
+.rating > label {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  margin-top: auto;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='126.729' height='126.73'%3e%3cpath fill='%23e3e3e3' d='M121.215 44.212l-34.899-3.3c-2.2-.2-4.101-1.6-5-3.7l-12.5-30.3c-2-5-9.101-5-11.101 0l-12.4 30.3c-.8 2.1-2.8 3.5-5 3.7l-34.9 3.3c-5.2.5-7.3 7-3.4 10.5l26.3 23.1c1.7 1.5 2.4 3.7 1.9 5.9l-7.9 32.399c-1.2 5.101 4.3 9.3 8.9 6.601l29.1-17.101c1.9-1.1 4.2-1.1 6.1 0l29.101 17.101c4.6 2.699 10.1-1.4 8.899-6.601l-7.8-32.399c-.5-2.2.2-4.4 1.9-5.9l26.3-23.1c3.8-3.5 1.6-10-3.6-10.5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 76%;
+  transition: .3s;
+}
+
+.rating > input:checked ~ label,
+.rating > input:checked ~ label ~ label {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='126.729' height='126.73'%3e%3cpath fill='%23fcd93a' d='M121.215 44.212l-34.899-3.3c-2.2-.2-4.101-1.6-5-3.7l-12.5-30.3c-2-5-9.101-5-11.101 0l-12.4 30.3c-.8 2.1-2.8 3.5-5 3.7l-34.9 3.3c-5.2.5-7.3 7-3.4 10.5l26.3 23.1c1.7 1.5 2.4 3.7 1.9 5.9l-7.9 32.399c-1.2 5.101 4.3 9.3 8.9 6.601l29.1-17.101c1.9-1.1 4.2-1.1 6.1 0l29.101 17.101c4.6 2.699 10.1-1.4 8.899-6.601l-7.8-32.399c-.5-2.2.2-4.4 1.9-5.9l26.3-23.1c3.8-3.5 1.6-10-3.6-10.5z'/%3e%3c/svg%3e");
+}
+
+
+.rating > input:not(:checked) ~ label:hover,
+.rating > input:not(:checked) ~ label:hover ~ label {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='126.729' height='126.73'%3e%3cpath fill='%23d8b11e' d='M121.215 44.212l-34.899-3.3c-2.2-.2-4.101-1.6-5-3.7l-12.5-30.3c-2-5-9.101-5-11.101 0l-12.4 30.3c-.8 2.1-2.8 3.5-5 3.7l-34.9 3.3c-5.2.5-7.3 7-3.4 10.5l26.3 23.1c1.7 1.5 2.4 3.7 1.9 5.9l-7.9 32.399c-1.2 5.101 4.3 9.3 8.9 6.601l29.1-17.101c1.9-1.1 4.2-1.1 6.1 0l29.101 17.101c4.6 2.699 10.1-1.4 8.899-6.601l-7.8-32.399c-.5-2.2.2-4.4 1.9-5.9l26.3-23.1c3.8-3.5 1.6-10-3.6-10.5z'/%3e%3c/svg%3e");
+}
+
+.emoji-wrapper {
+  width: 100%;
+  text-align: center;
+  height: 100px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.emoji-wrapper:before,
+.emoji-wrapper:after{
+  content: "";
+  height: 15px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  z-index: 1;
+}
+
+.emoji-wrapper:before {
+  top: 0;
+  background:black;
+}
+
+.emoji-wrapper:after{
+  bottom: 0;
+  background:black;
+}
+
+.emoji {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: .3s;
+}
+
+.emoji > svg {
+  margin: 15px 0; 
+  width: 70px;
+  height: 70px;
+  flex-shrink: 0;
+}
+
+#rating-1:checked ~ .emoji-wrapper > .emoji { transform: translateY(-100px); }
+#rating-2:checked ~ .emoji-wrapper > .emoji { transform: translateY(-200px); }
+#rating-3:checked ~ .emoji-wrapper > .emoji { transform: translateY(-300px); }
+#rating-4:checked ~ .emoji-wrapper > .emoji { transform: translateY(-400px); }
+#rating-5:checked ~ .emoji-wrapper > .emoji { transform: translateY(-500px); }
+
+.feedback {
+  max-width: 360px;
+  background-color:black;
+  width: 100%;
+  padding: 30px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  box-shadow: 0 4px 30px rgba(0,0,0,.05);
+}
+
+    .h1{
+        opacity: 0.9;
+    }
+th,td{
+    color:#e5e4e2;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+
+  
+
+}
+</style>
+<div class="container mt-4">
+    {% include '_messages.html' %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1 class="text-center"><font color="#e5e4e2">Order Invoice</h1></font>
+    
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <br>
+           <h2><font color="#e5e4e2">SpareMate</font></h2>
+            <br>
+            
+           <font color="#e5e4e2">Inoice: {{orders.invoice}}</font>
+            <br>
+            <font color="#e5e4e2">Status: {{orders.status}}</font>
+            <br>
+            <font color="#e5e4e2"> Customer name: {{customer.name}}</font>
+            <br>
+            <font color="#e5e4e2"> Customer email: {{customer.email}}</font>
+            <br>
+            <font color="#e5e4e2"> Customer contact: {{customer.contact}}</font>
+            <br>
+            <font color="#e5e4e2"> Customer Address: {{customer.address}}</font>
+            <br>
+            <br>
+     
+        <table class="table table-sm">
+            <thead>
+                <th>Sr</th>
+                <th>Name</th>
+                <th>Color</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Discount</th>
+                <th>Subtotal</th>
+            </thead>
+            <tbody>
+                {% for key, product in orders.orders.items() %}
+                {% set discount =(product.discount/100) * product.price|float %}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{product.name}}</td>
+                    <form action="{{url_for('updatecart', code=key)}}" method="post">
+                    <td> 
+                        {{product.color|capitalize}}
+                    </td>
+                    <td>&#8377;{{"%.2f"|format(product.price)}}</td>
+                    <td> {{product.quantity}} </td>
+                    {% if product.discount  %}
+                    <td>{{product.discount}}%</td>
+                    {% else %}
+                    <td></td>
+                    {% endif %}
+                    {% set subtotal = product.quantity|int * product.price|float  %}
+                    <td>&#8377;{{"%.2f"|format(subtotal - discount|round(1,'floor')) }}</td>
+                    <td> 
+                  
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+   
+      <h3 align="right"><font color="#e5e4e2"><font align="right">Grand Total: &#8377; {{grandTotal}}</font> </h3>
+      <br>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+
+<td>
+{% if orders.status=='Paid' %}
+{% else %}
+  <form action="{{url_for('payment')}}" method="POST">
+    {% set amount = grandTotal.replace('.','') %}
+
+    <input type="hidden" name="amount" value="{{amount}}">
+    <input type="hidden" name="invoice" value="{{orders.invoice}}">
+    <script
+      src="https://checkout.stripe.com/checkout.js"
+      class="stripe-button"
+      data-key="pk_test_51IW275F3uPaIHCIbrtZOdk8KUASeIxEzAl2T1wVg4fVP6uVxlN5BThqkYjqqfxAUzKdatK6VGJsNButwSPUCEl6Y00YN7cZP4H"
+      data-name="SpareMate"
+      data-description="Payemnt portal"
+      data-amount="{{amount}}"
+      data-currency="inr">
+    </script>
+    <br>
+    <br>
+    <a href="{{url_for('thanks')}}"class="btn btn-light">Pay on delivery(COD)</a>
+  </form> 
+{% endif %}
+<br>
+<br>
+
+
+
+
+
+
+
+
+</td>
+</div>
+<div class="buttons">
+  
+
+
+
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<hr color="#e5e4e2" class="h1">
+{% endblock%}

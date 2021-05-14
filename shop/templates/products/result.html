@@ -1,0 +1,294 @@
+{% extends 'layout.html' %}
+{% block body %}
+<style>
+   .resulttext{
+      display: table;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 2.5vw;
+    }
+  .search-media{
+    display: none;
+  }
+    .hr1{
+      opacity:  0.9;
+    }
+    .dropdown-item:hover {
+              background-color: #3D3D3D;
+              color: #e5e4e2;
+          }
+       
+    .navbar .nav-item .dropdown-menu{ display: none; }
+    .navbar .nav-item:hover .dropdown-menu{ display: block; }
+   
+    .welcome{
+    background-image: url('/static/17.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto;
+    width: 100%;
+    height:100%;
+    padding-top:120px;
+    }
+    .hero{
+      font-size:210px;
+      margin-top: 60px;
+
+      color:#e5e4e2 ;
+      text-align: center;
+   
+    }
+    .main{
+      font-size: 90px;
+      color: #c5a880;
+    }
+    .content{
+    height: 400px;
+    width: 600px;
+    overflow: hidden;
+    box-shadow: 1px 1px 15px rgba(0,0,0,0.4);
+    display: table;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .content .images{
+    height: 70%;
+    width: 100%;
+  }
+  .images img{
+    height: 100%;
+    width: 100%;
+  }
+    .float-left btn btn-sm btn-primary{
+      border-radius: 2px;
+    }
+    .searchbar{
+      float: right;
+    }
+  
+   .filterhead{
+     text-align:left;
+     padding-left: 10px;
+     font-size: large;
+     position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: auto;
+  
+   }
+
+   .card {
+            border: 1px solid #F5F5F5;
+            border-radius: 30px;
+            height: 100%;
+            width: 100%;
+            background-color: black;
+        }
+    
+   .card-body {
+            color: #e5e4e2;
+        }
+        
+        .card-img-top {
+            border-radius: 30px;
+            height: 50%;
+            max-width: 100%
+        }
+        
+      
+  
+    @media only screen and (max-width: 600px) {
+
+
+      .card {
+                border: 2px solid #F5F5F5;
+                border-radius: 40px;
+                height: 100%;
+                width: 70%;
+                background-color: black;
+                display: flex;
+                margin-left: auto;
+                margin-right: auto;
+            }
+   
+    .card-body {
+            color: #e5e4e2;
+        }
+        
+        .card-img-top {
+                border-radius: 40px;
+                height: 50%;
+                display: flex;
+                max-width: 100%
+            }
+        
+       
+  
+    .welcome{
+    background-image: url('/static/17.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto;
+    width: 100%;
+    height:100%;
+    padding-top:120px;
+    display: flex;
+  
+    }
+    .hero{
+      font-size:100px;
+      margin-top: 60px;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      color:#e5e4e2 ;
+      text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+   
+    }
+  
+    }
+  
+    li {
+      list-style-type: none;
+  }
+  
+  .btn {
+    border: none;
+    padding: 12px 16px;
+    cursor: pointer;
+    border-radius: 15px;
+    
+  }
+  
+    .heroImage {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.9)), url("/static/11.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+    width: 100%;
+    padding-top: 150px;
+  }
+  .heroContents {
+      padding-bottom: 35px;
+      text-align: center;
+      color: #e5e4e2;
+    width: 100%;
+  }
+  
+  a:link {
+      text-decoration: none;
+      color:#e5e4e2;
+  }
+  
+  /* rest of stuff */
+    .centered {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:#e5e4e2;
+  }
+  
+   
+    
+    
+    a{
+      color:#4d375d
+    }
+    
+      .heading{
+      
+         
+          font-size: 120px;
+          color: #f6f6f6
+          
+        
+          
+      }
+      .center{
+          text-align: center;
+          padding-top: 50px;
+          color:#e5e4e2;
+          position: -webkit-sticky; /* Safari */
+    position: sticky;
+  
+       
+  }
+   
+  @media only screen and (max-width: 600px) {
+    .resulttext{
+      display: table;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 4vw;
+    }
+
+    .search-media {
+                display: table;
+                max-width: 80%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        .searchbar{
+          display: none;
+        }
+  }
+
+
+  </style>
+  
+</div>
+  <br>
+  <br>
+  <br>
+  <div class="search-media">
+
+    <form class="form-inline my-2 my-lg-0" action="{{url_for('result')}}">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
+        <button class="btn btn-dark my-3 my-sm-1 " type="submit">Search</button>
+    </form>
+  </div>
+  <br>
+  <br>
+  <h1 class="resulttext"><font color="#e5e4e2">Showing search results for {{searchword}}</h1></font>
+
+
+  <br>
+<div class="container">
+    <div class="row">
+        {% for product in products %}
+      <div class="col-md-3 mt-4">
+        <div class="card">
+            <img src="{{url_for('static', filename='images/' + product.image_1)}}" class="card-img-top" alt="{{product.name}}" height="200" width="200">
+            <div class="card-body">
+               
+              <h5 class="text-center">{{product.name}}</h5>
+              <p class="text-center">Rs.{{product.price}}</p>
+            </div>
+            <div class="card-footer">
+               <font color="black"><a href="{{url_for('single_page',id=product.id)}}" class="float-left btn btn-sm btn-light">Details</a></font>
+                <form action="{{url_for('AddCart')}}" method="post">
+                  <input type="hidden" name="product_id" value="{{product.id}}">
+                  <button type="submit" class="btn btn-dark float-right"><font color="#e5e4e2">Add to cart</button></font>
+                  <input type="hidden" name="quantity" value="1" min="1" max="20">
+                  {% set colors = product.colors.split(',') %}
+                  <select name="colors" id="colors" style="visibility: hidden;">
+                      {% for color in colors %}
+                      {% set col = color.split(':') %}
+                      <option value="{{col[0]}}">{{col[0] | capitalize }}</option>
+                      {% endfor %}
+                  </select>
+              </form>
+            </div>
+        </div>
+      </div>
+        {% endfor %}
+      </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<hr color="#e5e4e2" class="hr1">
+{% endblock%}
