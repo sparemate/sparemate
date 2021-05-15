@@ -1,0 +1,339 @@
+{% extends 'layout.html' %}
+{% block body %}
+{% include '_messages.html'%}
+<head>
+<style>
+    h2,h3{
+        color:#e5e4e2;
+
+    }
+    .info{
+
+      display: table;
+      margin-left: auto;
+      margin-right: auto;
+        
+    }
+    h1{
+        color:#91091e;
+    }
+    p{
+        color:#e5e4e2;
+    }
+  
+  .qoute1{
+  font-size:40px;
+  color:#91091e;
+  }
+  ul{
+    list-style-type: upper-roman;
+    
+  }
+  li{
+    color: #e5e4e2;
+    font-size: larger;
+  }
+  .how{
+    display: table;
+margin-left: auto;
+
+    margin-right:auto;
+    margin-top: 150px;
+    
+    
+  }
+   .sbtn{
+
+display: table;
+margin-right: auto;
+margin-left: auto;
+}
+    .form_batt{
+        display: table;
+        margin-left: auto;
+        margin-right: auto;
+    }
+  
+  .center2{
+    font-size: x-large;
+    text-align: center;
+    color: #e5e4e2 ;
+  }
+
+
+
+  
+  
+    .hr1{
+    opacity:  0.9;
+  }
+ 
+  .navbar .nav-item .dropdown-menu{ display: none; }
+  .navbar .nav-item:hover .dropdown-menu{ display: block; }
+ 
+  .welcome{
+  background-image: url('/static/op.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 500px 500px;
+  width: 100%;
+  height:100%;
+  padding-top:500px;
+  display: table;
+  margin-left: auto;
+  margin-right:auto;
+  }
+  
+  .hero{
+    font-size:100px;
+    margin-top: 200px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color:#e5e4e2 ;
+    text-align: center;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+ 
+  }
+  .main{
+    font-size: 90px;
+    color: #c5a880;
+  }
+  .content{
+  height: 400px;
+  width: 600px;
+  overflow: hidden;
+  box-shadow: 1px 1px 15px rgba(0,0,0,0.4);
+  display: table;
+  margin-right: auto;
+  margin-left: auto;
+}
+.content .images{
+  height: 70%;
+  width: 100%;
+}
+.images img{
+  height: 100%;
+  width: 100%;
+}
+  .float-left btn btn-sm btn-primary{
+    border-radius: 2px;
+  }
+  .searchbar{
+    float: right;
+  }
+
+ .filterhead{
+   text-align:left;
+   padding-left: 10px;
+   font-size: large;
+   position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: auto;
+
+ }
+  
+  .card{
+    border: 1px solid #F5F5F5;
+    border-radius: 30px;
+    height:100%;
+    width:100%;
+    background-color:#0f0f0f;
+
+
+  }
+  .card-body{
+    color:#e5e4e2;
+  }
+
+  .card-img-top{
+    border-radius: 30px;
+    height: 50%;
+    width:90%;
+  }
+
+  @media only screen and (max-width: 600px) {
+
+
+
+  .l11 {
+    list-style-type: none;
+    font-size: 2vw;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+   
+}
+
+    .qoute1{
+
+      font-size: 5vw;
+      margin-left: auto;
+      margin-right: auto;
+      display: table;
+    }
+
+.info{
+
+
+  max-width: 80%;
+}
+
+
+
+
+
+
+
+    .card{
+    border: 2px solid #F5F5F5;
+    border-radius: 40px;
+    height:100%;
+    width:70%;
+    background-color:black;
+    display: flex;
+  margin-left: auto;
+  margin-right: auto;
+
+
+  }
+  
+  .qoute{
+  display: none;
+  }
+ 
+  .card-body{
+    color:#e5e4e2;
+  }
+
+  .card-img-top{
+    border-radius: 40px;
+    height: 50%;
+    width:90%;
+    display: flex;
+  }
+
+  .welcome{
+  background-image: url('/static/op.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
+  width: 100%;
+  height:100%;
+  padding-top:120px;
+  display: flex;
+
+  }
+  .hero{
+    font-size:10vw;
+    margin-top: 80px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color:#e5e4e2 ;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+  
+ 
+  }
+
+  }
+
+  li {
+    list-style-type: none;
+
+}
+
+.btn {
+  border: none;
+  padding: 12px 16px;
+  cursor: pointer;
+  border-radius: 15px;
+  
+}
+
+
+.heroContents {
+	padding-bottom: 35px;
+	text-align: center;
+	color: #e5e4e2;
+  width: 100%;
+}
+
+a:link {
+    text-decoration: none;
+    color:#e5e4e2;
+}
+
+/* rest of stuff */
+  .centered {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color:#e5e4e2;
+}
+
+ 
+  
+  
+  a{
+    color:#4d375d
+  }
+  
+    .heading{
+    
+       
+        font-size: 120px;
+        color: #f6f6f6
+        
+      
+        
+    }
+    .center{
+        text-align: center;
+        padding-top: 50px;
+        color:#e5e4e2;
+        position: -webkit-sticky; /* Safari */
+  position: sticky;
+
+     
+}
+</style>
+</head>
+<body>
+
+
+<!--header-->
+
+
+<br>
+<br>
+<h1 align="center" class="hero">SpareMate Installation Policy</font></h1>
+<br>
+<br>
+<div class="info">
+  
+
+  <ul color="red">
+    <h3 class="qoute1"><b>Installation Policy</h3></font></b>
+    <br>
+    <li class="l1">1.The products where"Installation" is mentioned,are eligible for installation scheme </li>
+    <li class='l1'>2.Installation within radius of 5KM are free.If the limit is extended extra amount will be charged</li>
+    <li class='l1'>3.Customer has to request for installation service by filling a <a href="{{url_for('install_services')}}">form</a> where they have to mention details like bill no. etc.</li>
+    <li class=l1>4.The installation will be done after 24 to 48 hours of request.</li>
+    <li class=l1>5.The installation time is from <b><font color="#91091e">9AM to 9PM</font>.</b></li>
+  </ul>
+  </div>
+</div>
+
+
+
+
+
+
+</div>
+<hr color="#e5e4e2" style="opacity: 0.9;">  
+<br>
+<br>
+<br>
+{% endblock %}
